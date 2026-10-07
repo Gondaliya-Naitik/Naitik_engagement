@@ -1,7 +1,8 @@
-import { wedding } from "../config";
+import { useWedding } from "../lang";
 
 /** Full-screen hero — Ganesh, mantra, couple names and the date. */
 export default function Hero() {
+  const wedding = useWedding();
   const { hero, couple } = wedding;
 
   return (

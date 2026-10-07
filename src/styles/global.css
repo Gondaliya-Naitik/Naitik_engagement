@@ -54,6 +54,26 @@ img {
   background: rgba(118, 127, 91, 0.3);
 }
 
+/* ---------- Gujarati typography ---------- */
+/* Great Vibes / DM Serif have no Gujarati glyphs, so in "gu" mode every
+   variable swaps to the Gujarati webfont (Nirmala UI on Windows as backup).
+   data-lang is stamped on <html> by the LanguageProvider. */
+html[data-lang="gu"] {
+  --font-script: "Noto Serif Gujarati", "Nirmala UI", serif;
+  --font-serif: "Noto Serif Gujarati", "Nirmala UI", Georgia, serif;
+  --font-sans: "Noto Sans Gujarati", "Nirmala UI", -apple-system, "Segoe UI",
+    Roboto, Arial, sans-serif;
+}
+
+html[data-lang="gu"] .sect-head {
+  font-weight: 600; /* script headings lose their flourish — add weight */
+}
+
+html[data-lang="gu"] .btn,
+html[data-lang="gu"] .smart-image strong {
+  font-style: normal; /* slanted Gujarati renders poorly */
+}
+
 /* ---------- layout helpers ---------- */
 .wrap {
   width: 100%;
@@ -266,6 +286,38 @@ img {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   opacity: 0.7;
+}
+
+/* ---------- floating language button ---------- */
+.lang-toggle {
+  position: fixed;
+  right: 18px;
+  bottom: 74px; /* stacks just above the music button */
+  z-index: 90; /* stays tappable over the opening gate (z-index 80) */
+  min-width: 46px;
+  height: 46px;
+  padding: 0 12px;
+  border-radius: 23px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: var(--sage);
+  color: #fdfaf2;
+  font-family: var(--font-serif);
+  font-size: 14px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 12px 28px rgba(50, 56, 38, 0.35);
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.lang-toggle:hover {
+  transform: translateY(-2px);
+  background: var(--sage-deep);
+}
+
+.lang-toggle:focus-visible {
+  outline: 2px solid var(--sage);
+  outline-offset: 3px;
 }
 
 /* ---------- floating music button ---------- */

@@ -1,7 +1,8 @@
-import { wedding } from "../config";
+import { useWedding } from "../lang";
 
 /** Sage footer — names, date, heart divider and the credit line. */
 export default function Footer() {
+  const wedding = useWedding();
   const { footer } = wedding;
 
   return (

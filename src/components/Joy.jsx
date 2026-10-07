@@ -1,8 +1,9 @@
-import { wedding } from "../config";
+import { useWedding } from "../lang";
 import Reveal from "./Reveal";
 
 /** "Sharing The Joy" — hosts and family compliments list. */
 export default function Joy() {
+  const wedding = useWedding();
   const { joy } = wedding;
   // host takes one name or a list: "Suman" / ["Mr. X", "Miss. Y"]
   const hosts = (Array.isArray(joy.host) ? joy.host : [joy.host]).filter(Boolean);

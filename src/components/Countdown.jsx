@@ -1,8 +1,9 @@
-import { wedding } from "../config";
+import { useWedding } from "../lang";
 import { useCountdown } from "../hooks/useCountdown";
 
 /** Sage band with a live countdown to the engagement. */
 export default function Countdown() {
+  const wedding = useWedding();
   const { heading, date, labels } = wedding.countdown;
   const { days, hours, minutes, seconds } = useCountdown(date);
 

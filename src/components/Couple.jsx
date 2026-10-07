@@ -1,4 +1,4 @@
-import { wedding } from "../config";
+import { useWedding } from "../lang";
 import Reveal from "./Reveal";
 import SmartImage from "./SmartImage";
 
@@ -16,6 +16,7 @@ function PersonBlock({ data }) {
 
 /** Couple photo + both families — name and parents for each side. */
 export default function Couple() {
+  const wedding = useWedding();
   const { couple } = wedding;
 
   return (

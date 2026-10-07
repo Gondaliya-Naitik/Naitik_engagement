@@ -1,9 +1,11 @@
-import { wedding, getCalendarUrl } from "../config";
+import { getCalendarUrl } from "../config";
+import { useWedding } from "../lang";
 import Reveal from "./Reveal";
 import SmartImage from "./SmartImage";
 
 /** Sage band — a looping video (or photo), the blessing lines and a calendar button. */
 export default function Blessings() {
+  const wedding = useWedding();
   const { blessings } = wedding;
 
   return (
@@ -38,7 +40,7 @@ export default function Blessings() {
 
         <a
           className="btn"
-          href={getCalendarUrl()}
+          href={getCalendarUrl(wedding)}
           target="_blank"
           rel="noreferrer"
         >

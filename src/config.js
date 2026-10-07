@@ -57,12 +57,12 @@ export const wedding = {
     withText: "With",
     bride: {
       name: "Suman", // hero + couple section
-      parents: "(D/O: Mr. Ashok Kumar & Mrs. Tina Nolkha, G/D: Late Shri Dalchand Nolkha & Smt. Pandevi)",
+      parents: "(D/O: Mr. Ashok Kumar & Mrs. Tina Nolkha)",
       photo: "/images/bride.png",
     },
     groom: {
       name: "Naitik",
-      parents: "(S/O: Mr. Kanti Bhai & Mrs. Shardaben Gondaliya, G/S: Shri BabuBhai Gondaliya  & Late Smt. Shantaaben)",
+      parents: "(S/O: Mr. Kanti Bhai & Mrs. Shardaben Gondaliya)",
       photo: "/images/groom.png",
     },
   },
@@ -119,10 +119,10 @@ export const wedding = {
   // ---------- Sharing the joy ----------
   joy: {
     heading: "Sharing The Joy",
-    host: ["Mr. Kriyansh Gondliya", "Mr. Devansh Mangroliya", "Miss. Griva Gondliya", "Miss. Vedika Gondliya"], // one line each
+    host: ["Mr. Kriyansh Gondaliya", "Mr. Devansh Mangroliya", "Miss Griva Gondaliya", "Miss Vedika Gondaliya"], // one line each
     hostNote: "With Best Compliments",
     compliments: [
-      "Gondliya Family"
+      "Gondaliya Family"
     ],
   },
 
@@ -156,8 +156,8 @@ export const wedding = {
 // ============================================================
 
 /** Google Maps link for the venue (auto-search when mapUrl is empty). */
-export function getMapUrl() {
-  const { venue } = wedding;
+export function getMapUrl(cfg = wedding) {
+  const { venue } = cfg;
   if (venue.mapUrl) return venue.mapUrl;
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
     venue.name
@@ -165,8 +165,8 @@ export function getMapUrl() {
 }
 
 /** "Add to Calendar" Google Calendar link. */
-export function getCalendarUrl() {
-  const start = new Date(wedding.countdown.date);
+export function getCalendarUrl(cfg = wedding) {
+  const start = new Date(cfg.countdown.date);
   const end = new Date(start.getTime() + 4 * 60 * 60 * 1000);
   const pad = (n) => String(n).padStart(2, "0");
   const fmt = (d) =>
@@ -176,10 +176,10 @@ export function getCalendarUrl() {
 
   const params = new URLSearchParams({
     action: "TEMPLATE",
-    text: wedding.blessings.calendarTitle,
+    text: cfg.blessings.calendarTitle,
     dates: `${fmt(start)}/${fmt(end)}`,
-    details: `We would love to have you with us. — ${wedding.couple.groom.name} & ${wedding.couple.bride.name}`,
-    location: wedding.venue.name,
+    details: `We would love to have you with us. — ${cfg.couple.groom.name} & ${cfg.couple.bride.name}`,
+    location: cfg.venue.name,
   });
   return `https://calendar.google.com/calendar/render?${params.toString()}`;
 }

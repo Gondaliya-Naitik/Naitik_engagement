@@ -1,8 +1,9 @@
-import { wedding } from "../config";
+import { useWedding } from "../lang";
 import Reveal from "./Reveal";
 
 /** "Assistance & Coordination" — phone numbers + blessings-only note. */
 export default function Contacts() {
+  const wedding = useWedding();
   const { contacts } = wedding;
 
   return (

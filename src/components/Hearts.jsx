@@ -1,9 +1,10 @@
-import { wedding } from "../config";
+import { useWedding } from "../lang";
 import Reveal from "./Reveal";
 import SmartImage from "./SmartImage";
 
 /** "Hearts & Horizons" — monogram + a short poetic paragraph. */
 export default function Hearts() {
+  const wedding = useWedding();
   const { hearts } = wedding;
 
   return (

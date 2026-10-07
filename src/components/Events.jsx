@@ -1,4 +1,4 @@
-import { wedding } from "../config";
+import { useWedding } from "../lang";
 import Reveal from "./Reveal";
 import SmartImage from "./SmartImage";
 
@@ -16,6 +16,7 @@ function EventLine({ icon, children }) {
 
 /** Illustrated event cards — photo on top, sage info panel below. */
 export default function Events() {
+  const wedding = useWedding();
   const { events, venue } = wedding;
 
   return (

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { wedding } from "../config";
+import { uiEn as ui } from "../i18n";
 
 /** Drafting symbols + code tokens that drift across the blueprint backdrop. */
 const MARKS = [
@@ -53,7 +54,8 @@ const QUICK_MS = 500; // for guests who asked for reduced motion
 /**
  * Full-screen opening screen: Suman's drawing sheet, taped to the board.
  * Tapping it inks the plan, lands the sanction stamp, then lifts the sheet
- * away to reveal the invitation.
+ * away to reveal the invitation. The gate is the blueprint — it always stays
+ * in English; only the card inside follows the language toggle.
  */
 export default function Gate({ onOpen }) {
   const { seal, hint, sheetTitle, roles, stampText } = wedding.envelope;
@@ -81,7 +83,7 @@ export default function Gate({ onOpen }) {
       onClick={open}
       role="button"
       tabIndex={0}
-      aria-label="Open the invitation"
+      aria-label={ui.openInvitation}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -108,10 +110,10 @@ export default function Gate({ onOpen }) {
         ))}
       </span>
       <span className="gate-corner gate-corner--tl" aria-hidden="true">
-        {"// sheet 01 · drawn by Suman, deployed by Naitik"}
+        {ui.drawnLine}
       </span>
       <span className="gate-corner gate-corner--br" aria-hidden="true">
-        {`site · ${wedding.venue.name}`}
+        {ui.siteLine(wedding.venue.name)}
       </span>
 
       {sheetTitle && <p className="gate-title">{sheetTitle}</p>}
@@ -123,7 +125,7 @@ export default function Gate({ onOpen }) {
           e.stopPropagation();
           open();
         }}
-        aria-label="Open the invitation"
+        aria-label={ui.openInvitation}
       >
         <span className="gate-tape gate-tape--l" aria-hidden="true" />
         <span className="gate-tape gate-tape--r" aria-hidden="true" />
@@ -144,24 +146,24 @@ export default function Gate({ onOpen }) {
           </span>
           <span className="gate-rows">
             <span>
-              <i>project</i>
+              <i>{ui.project}</i>
               <b>{seal}</b>
             </span>
             <span>
-              <i>scale</i>
-              <b>1 : forever</b>
+              <i>{ui.scale}</i>
+              <b>{ui.forever}</b>
             </span>
             <span>
-              <i>site</i>
+              <i>{ui.site}</i>
               <b>{site}</b>
             </span>
             <span>
-              <i>date</i>
+              <i>{ui.date}</i>
               <b>{wedding.footer.dateLine}</b>
             </span>
           </span>
           <span className="gate-note">
-            {"// sanctioned by family & friends, built to last"}
+            {ui.sanctioned}
           </span>
         </span>
       </button>

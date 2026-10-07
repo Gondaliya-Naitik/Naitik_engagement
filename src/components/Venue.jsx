@@ -1,14 +1,17 @@
-import { wedding, getMapUrl } from "../config";
+import { getMapUrl } from "../config";
+import { useWedding, useT } from "../lang";
 import Reveal from "./Reveal";
 
 /** Venue card with a "Get Direction" button. */
 export default function Venue() {
+  const wedding = useWedding();
+  const ui = useT();
   const { venue } = wedding;
 
   return (
     <section className="venue">
       <Reveal className="wrap">
-        <h2 className="sect-head">The Venue</h2>
+        <h2 className="sect-head">{ui.venueHeading}</h2>
 
         <div className="venue-card">
           <p className="venue-name">{venue.name}</p>
@@ -16,11 +19,11 @@ export default function Venue() {
 
           <a
             className="btn"
-            href={getMapUrl()}
+            href={getMapUrl(wedding)}
             target="_blank"
             rel="noreferrer"
           >
-            <span aria-hidden="true">📍</span> Get Direction
+            <span aria-hidden="true">📍</span> {ui.getDirection}
           </a>
         </div>
       </Reveal>

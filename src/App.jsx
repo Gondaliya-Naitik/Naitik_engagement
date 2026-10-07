@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { wedding } from "./config";
+import { LanguageProvider } from "./lang";
 import Gate from "./components/Gate";
 import Hero from "./components/Hero";
 import Countdown from "./components/Countdown";
@@ -13,6 +14,7 @@ import Joy from "./components/Joy";
 import Contacts from "./components/Contacts";
 import Footer from "./components/Footer";
 import MusicToggle from "./components/MusicToggle";
+import LangToggle from "./components/LangToggle";
 
 export default function App() {
   const [opened, setOpened] = useState(false);
@@ -78,7 +80,8 @@ export default function App() {
   };
 
   return (
-    <div className={`card${opened ? " is-open" : ""}`}>
+    <LanguageProvider>
+      <div className={`card${opened ? " is-open" : ""}`}>
       {wedding.music.src && (
         <audio ref={audioRef} src={wedding.music.src} loop preload="metadata" />
       )}
@@ -103,6 +106,9 @@ export default function App() {
       {wedding.music.src && (
         <MusicToggle playing={musicOn} onToggle={toggleMusic} />
       )}
-    </div>
+
+      {opened && <LangToggle />}
+      </div>
+    </LanguageProvider>
   );
 }

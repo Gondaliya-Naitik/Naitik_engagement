@@ -1,9 +1,10 @@
-import { wedding } from "../config";
+import { useWedding } from "../lang";
 import Reveal from "./Reveal";
 import Divider from "./Divider";
 
 /** Cream section with an ornamental divider, heading and a short poem. */
 export default function Story() {
+  const wedding = useWedding();
   const { story } = wedding;
 
   return (
