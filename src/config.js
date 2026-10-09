@@ -119,7 +119,7 @@ export const wedding = {
   // ---------- Sharing the joy ----------
   joy: {
     heading: "Sharing The Joy",
-    host: ["Mr. Kriyansh Gondaliya", "Mr. Devansh Mangroliya", "Miss Griva Gondaliya", "Miss Vedika Gondaliya"], // one line each
+    host: ["Mr. Kriyansh Gondaliya","Mr. Nirvaan Gondaliya", "Mr. Devansh Mangroliya", "Miss Griva Gondaliya", "Miss Vedika Gondaliya"], // one line each
     hostNote: "With Best Compliments",
     compliments: [
       "Gondaliya Family"
